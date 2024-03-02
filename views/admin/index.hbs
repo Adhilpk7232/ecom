@@ -1,0 +1,46 @@
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar bg-gray-900 text-white sm:w-64 flex flex-col justify-between w-20">
+    <!-- Sidebar content -->
+    <div class="py-4 px-6">
+      <h2 class="text-xl font-semibold mb-4 sm:flex hidden">Admin Dashboard</h2>
+      <ul class="space-y-2">
+        <!-- Sidebar links -->
+        <li>
+            
+            <a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700">Dashboard</a></li>
+        <li><a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700">Users</a></li>
+        <li><a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700">Settings</a></li>
+        <!-- Add more sidebar links as needed -->
+      </ul>
+    </div>
+    <!-- Close button -->
+    
+  </div>
+    <!-- Navbar -->
+  <div class=" w-full h-full">
+      <nav class="flex-col">hello</nav>
+  <!-- Main content -->
+  <div id="mainContent" class="flex-1 bg-gray-200">
+    <!-- Your main content here -->
+    <div class="p-8">
+      <h1 class="text-2xl font-semibold">Main Content</h1>
+      <p>This is the main content area.</p>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- JavaScript to toggle sidebar -->
+<script>
+  const closeBtn = document.getElementById('closeSidebar');
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('mainContent');
+
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('closed');
+    mainContent.classList.toggle('closed');
+
+  });
+</script>
