@@ -5,7 +5,7 @@
                 <h2 class="text-xl font-semibold ">Ecom</h2>
             </div>
             <ul class="space-y-6 sm:space-y-3">
-                <li class="active py-2 px-4 rounded-lg hover:bg-gray-200 bg-gray-200">
+                <li class=" py-2 px-4 rounded-lg hover:bg-gray-200 ">
                     <div class="flex  items-center justify-start">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -36,7 +36,7 @@
                         <a href="/admin/classification" class=" pl-4 sm:block hidden">Classification</a>
                     </div>
                 </li>
-                <li class=" py-2 px-4 rounded-lg hover:bg-gray-200">
+                <li class=" py-2 px-4 rounded-lg hover:bg-gray-200  active bg-gray-200">
                     <div class="flex  items-center justify-start">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -84,30 +84,98 @@
                 </div>
             </div>
         </nav>
-        <div class="content m-1 w-full h-full overflow-y-scroll">
-            <div class="ml-5 mt-5">
-                        <h1 class="text-2xl  mb-1 text-left">Dashboard</h1>
-                        <p class="py-4"><span class="text-gray-400">Dashboard</span></p>
+        <div class="content p-1 w-full h-full overflow-y-scroll bg-gray-100">
+            <div class="container  px-4 py-8">
+                <h1 class="text-2xl  mb-1 text-left">Create Banner</h1>
+                <p class="py-4"><a href="/admin/dashbord">Dashboard</a> / <a href="/admin/banner">Banner</a> / <span class="text-gray-400">Create Banner</span></p>
+                <!-- Form -->
+                <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4">
+            <div class="md:flex md:items-center md:justify-between">
+                <!-- Name Field -->
+                <div class="mb-4 md:w-1/2 md:mr-2">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                        Name
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="name" type="text" placeholder="Enter name">
+                </div>
+                <!-- Image Field -->
+                <div class="mb-4 md:w-1/2">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="image">
+                        Image 
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="image" type="file" placeholder="Enter image URL">
+                </div>
+            </div>
+            
+            <div class="md:flex md:items-center md:justify-between">
+                <!-- url Field -->
+                <div class="mb-4 md:w-1/2 md:mr-2">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                        Url
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="url" type="text" placeholder="Enter Url">
+                </div>
+                <!-- Status Field -->
+                <div class="mb-4 md:w-1/2">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                        Status 
+                    </label>
+                    <div class="relative">
+                    <select
+                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">Select status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    <div
+                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <path
+                                d="M8.293 13.707a1 1 0 0 1-1.414-1.414L9.586 10 6.293 6.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-.707.293z" />
+                        </svg>
                     </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex items-center justify-center md:justify-end gap-5 border-t-2 pt-4">
+                <button
+                    class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button">
+                    Discard
+                </button>
+                <button
+                    class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button">
+                    Save
+                </button>
+            </div>
+        </form>
+            </div>
         </div>
     </aside>
 </div>
 
 <script>
-  // Toggle dropdown
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.querySelector(".admin button");
-    const dropdownMenu = document.querySelector(".admin .hidden");
+    // Toggle dropdown
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdownToggle = document.querySelector(".admin button");
+        const dropdownMenu = document.querySelector(".admin .hidden");
 
-    dropdownToggle.addEventListener("click", function () {
-      dropdownMenu.classList.toggle("hidden");
-    });
+        dropdownToggle.addEventListener("click", function () {
+            dropdownMenu.classList.toggle("hidden");
+        });
 
-    // Hide dropdown when clicking outside
-    document.addEventListener("click", function (event) {
-      if (!dropdownToggle.contains(event.target)) {
-        dropdownMenu.classList.add("hidden");
-      }
+        // Hide dropdown when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!dropdownToggle.contains(event.target)) {
+                dropdownMenu.classList.add("hidden");
+            }
+        });
     });
-  });
 </script>
