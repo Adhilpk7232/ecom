@@ -87,7 +87,9 @@
         <div class="content p-1 w-full h-full overflow-y-scroll bg-gray-100">
             <div class="container  px-4 py-8">
                 <h1 class="text-2xl  mb-1 text-left">Create Classification</h1>
-                <p class="py-4"><a href="/admin/dashbord">Dashboard</a> / <a href="/admin/classification">Classification</a> / <span class="text-gray-400">Create Classification</span></p>
+                <p class="py-4"><a href="/admin/dashbord">Dashboard</a> / <a
+                        href="/admin/classification">Classification</a> / <span class="text-gray-400">Create
+                        Classification</span></p>
                 <!-- Form -->
                 <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4" onsubmit="return validateForm()">
                     <div class="md:grid md:grid-cols-2 ">
@@ -100,7 +102,7 @@
                                 class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="name" type="text" placeholder="Enter name">
                             <p id="nameError" class="text-red-300"></p>
-                
+
                         </div>
 
                         <!-- Status Field -->
@@ -114,8 +116,10 @@
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
                                         <path
                                             d="M8.293 13.707a1 1 0 0 1-1.414-1.414L9.586 10 6.293 6.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-.707.293z" />
                                     </svg>
@@ -123,15 +127,17 @@
                             </div>
                         </div>
                     </div>
-                
-                
+
+
                     <!-- Submit Button -->
                     <div class="flex items-center justify-center md:justify-end gap-5 border-t-2 pt-4">
-                        <button class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        <button
+                            class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button">
                             Discard
                         </button>
-                        <button class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        <button
+                            class="bg-gray-400 hover:bg-gray-200  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="submit">
                             Save
                         </button>
@@ -161,29 +167,29 @@
     });
     const nameError = document.getElementById('nameError')
 
-        function validateForm() {
-            console.log("hello")
-            const nameField = document.getElementById('name');
-            let error = false;
+    function validateForm() {
+        console.log("hello")
+        const nameField = document.getElementById('name');
+        let error = false;
 
-            // Clear previous error styles
-            nameField.classList.remove('border-red-500');
+        // Clear previous error styles
+        nameField.classList.remove('border-red-500');
 
-            // Validate Name Field
-            if (nameField.value.trim() === '') {
-                nameField.classList.add('border', 'border-red-300');
-                nameError.innerHTML = 'Name is required'
-                error = true;
-            }
-
-            // Focus on the first error field
-            if (error) {
-                if (nameField.value.trim() === '') {
-                    nameField.focus();
-                }
-                return false;
-            }
-
-            return true;
+        // Validate Name Field
+        if (nameField.value.trim() === '') {
+            nameField.classList.add('border', 'border-red-300');
+            nameError.innerHTML = 'Name is required'
+            error = true;
         }
+
+        // Focus on the first error field
+        if (error) {
+            if (nameField.value.trim() === '') {
+                nameField.focus();
+            }
+            return false;
+        }
+
+        return true;
+    }
 </script>
