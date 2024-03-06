@@ -3,8 +3,8 @@ const express = require('express');
 const hbs = require('hbs')
 const path = require('path')
 const app = express();
-const PORT = process.env.PORT || 3002;
-const  ip = "192.168.1.2"
+const PORT = process.env.PORT || 4002;
+const  ip = "192.168.5.23"
 const adminRoute =require("./routes/admin.route")
 const userRoute =require("./routes/user.route")
 
