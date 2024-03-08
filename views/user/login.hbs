@@ -1,0 +1,165 @@
+<!-- Navigation -->
+<nav class="bg-white shadow-md fixed top-0 z-50 w-full">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 ">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex ">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-bold text-2xl ">Ecom</h1>
+                    {{!-- <img class="h-8 w-auto" src="logo.svg" alt="Logo"> --}}
+                </div>
+
+            </div>
+            <div class="flex items-center justify-end relative">
+                <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8 ">
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Home</a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Shop</a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Blog</a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Contact</a>
+                    <!-- Add more navigation links as needed -->
+                </div>
+                <div class=" sm:-my-px sm:ml-6  sm:space-x-1 ">
+
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                    </a>
+
+                    <!-- Add more navigation links as needed -->
+                </div>
+                <div class="flex sm:hidden items-center sm:ml-6 mx-1">
+                    <button id="sidebarToggle" class=" text-gray-600 px-4 py-2 rounded-md hover:bg-gray-100"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="fixed inset-y-0 left-0 w-64 bg-gray-100 overflow-y-auto transition-transform transform -translate-x-full ease-in-out duration-300 z-50"
+                    id="sidebar">
+                    <div class="flex items-end justify-end">
+                    </div>
+                    <div class="text-2xl">
+                        <p class="text-left border-b p-2"><a href="#"
+                                class="px-1 pt-1  text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Shop</a>
+                        </p>
+                        <p class="text-left border-b p-2"><a href="#"
+                                class="px-1 pt-1  text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Shop</a>
+                        </p>
+                        <p class="text-left border-b p-2"><a href="#"
+                                class="px-1 pt-1  text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Shop</a>
+                        </p>
+                        <p class="text-left border-b p-2"><a href="#"
+                                class="px-1 pt-1  text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:text-gray-500 hover:border-gray-300 transition duration-150 ease-in-out">Shop</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- User Profile Menu -->
+        </div>
+    </div>
+</nav>
+<!-- Hero Section -->
+<section class="bg-gray-100 py-24 px-8  w-full flex sm:flex-row flex-col  items-center justify-center">
+    <div
+        class="w-full sm:w-1/2 h-96 bg-gradient-to-r from-pink-500 to-red-500 text-white flex flex-col items-center justify-center">
+        <h1 class="text-2xl font-bold pb-2">New to our Shop?</h1>
+        <p class="text-center text-xl px-5 pb-4">There are advances being made in science and technology everyday, and a
+            good example of this is the</p>
+        <button class="rounded-full outline-none border-white border py-2 px-4"><a href="">CREATE AN
+                ACCOUNT</a></button>
+    </div>
+    <div class="w-full sm:w-1/2 h-96 bg-white flex  items-center justify-center">
+        <div class=" w-3/4">
+            <h1 class="font-bold text-2xl py-1">Welcome Back !</h1>
+            <h1 class="font-bold text-2xl py-1 mb-4">Please Sign in now</h1>
+            <form action="">
+                <div class="username my-4">
+                    <input type="text" placeholder="Username" class=" text-gray-500 w-full outline-none border-b p-2">
+                </div>
+                <div class="password my-4">
+                    <input type="password" placeholder="Password"
+                        class=" text-gray-500 w-full outline-none border-b p-2">
+                </div>
+                <div class="flex items-center justify-start p-2">
+
+                    <input type="checkbox" name="" id="" class="outline-none border-gray-300 border">
+                    <p class="mx-3">Remeber me</p>
+                </div>
+                <button
+                    class=" py-2 text-white w-full rounded-full bg-gradient-to-r from-pink-500 to-red-500 outline-none border">Login</button>
+                <div class="w-full text-right py-1">
+                    <a href="">Forget Password ? </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<section class="footerContent  text-gray-700 py-6">
+    <div class="container mx-auto px-5 flex flex-wrap justify-center">
+        <!-- Contact -->
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4">
+            <h2 class="text-lg font-semibold mb-2">Contact</h2>
+            <p>Have questions or concerns?</p>
+            <p>Email: <a href="mailto:support@example.com"
+                    class="text-blue-400 hover:text-blue-600">support@example.com</a></p>
+            <p>Phone: <span class="text-blue-400">1-800-123-4567</span></p>
+        </div>
+        <!-- Blog -->
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4">
+            <h2 class="text-lg font-semibold mb-2">Blog</h2>
+            <p>Stay updated with the latest news, tips, and trends. Check out our blog for insightful articles and
+                helpful resources.</p>
+        </div>
+        <!-- About Us -->
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4">
+            <h2 class="text-lg font-semibold mb-2">About Us</h2>
+            <p>Discover our story and mission. Learn more about who we are, what we do, and why we do it.</p>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p class="text-sm leading-5 text-gray-600">&copy; 2024 E-Commerce Store. All rights reserved.</p>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p class="text-sm leading-5 text-gray-600"></p>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#sidebarToggle').click(function () {
+            $('#sidebar').toggleClass('-translate-x-full');
+        });
+
+        $(document).click(function (event) {
+            if (!$(event.target).closest('#sidebarToggle').length && !$(event.target).closest('#sidebar').length) {
+                $('#sidebar').addClass('-translate-x-full');
+            }
+        });
+    });
+</script>
