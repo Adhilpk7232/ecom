@@ -91,7 +91,7 @@
                         href="/admin/classification">Classification</a> / <span class="text-gray-400">Create
                         Classification</span></p>
                 <!-- Form -->
-                <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4" onsubmit="return validateForm()">
+                <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4" method="post" action="http://65.21.3.61:9001/api/v1/collections" onsubmit="submitForm(event)">
                     <div class="md:grid md:grid-cols-2 ">
                         <!-- Name Field -->
                         <div class="mb-4 md:mr-4">
@@ -100,32 +100,26 @@
                             </label>
                             <input
                                 class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="name" type="text" placeholder="Enter name">
-                            <p id="nameError" class="text-red-300"></p>
-
+                                id="name" name="name" type="text" placeholder="Enter name" required>
                         </div>
-
-                        <!-- Status Field -->
+                        <!-- UrlKey Field -->
                         <div class="mb-4 md:mr-4">
-                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
-                                Status
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="urlKey">
+                                Urlkey
                             </label>
-                            <div class="relative text-gray-700">
-                                <select
-                                    class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                                <div
-                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M8.293 13.707a1 1 0 0 1-1.414-1.414L9.586 10 6.293 6.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-.707.293z" />
-                                    </svg>
-                                </div>
-                            </div>
+                            <input
+                                class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="urlKey" name="urlKey" type="text" placeholder="Enter name" required>
                         </div>
+                        <!-- description Field -->
+                        <div class="mb-4 md:mr-4">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                                Description
+                            </label>
+                            <textarea required class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="description" cols="5" rows="5">
+                            </textarea>
+                        </div>
+                        
                     </div>
 
 
@@ -165,31 +159,38 @@
             }
         });
     });
-    const nameError = document.getElementById('nameError')
-
-    function validateForm() {
-        console.log("hello")
-        const nameField = document.getElementById('name');
-        let error = false;
-
-        // Clear previous error styles
-        nameField.classList.remove('border-red-500');
-
-        // Validate Name Field
-        if (nameField.value.trim() === '') {
-            nameField.classList.add('border', 'border-red-300');
-            nameError.innerHTML = 'Name is required'
-            error = true;
-        }
-
-        // Focus on the first error field
-        if (error) {
-            if (nameField.value.trim() === '') {
-                nameField.focus();
+    function submitForm(event) {
+        event.preventDefault(); // Prevent default form submission
+        var jsonData = {};
+        var form = event.target;
+        var formData = new FormData(form);
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+    });
+        console.log("data",jsonData)
+        fetch('http://65.21.3.61:9001/api/v1/collections', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {if (!response.ok) {
+                throw new Error('Error uploading image: ' + response.statusText);
             }
-            return false;
-        }
+            return response.json();})
+        .then(data => {
 
-        return true;
+            alert(data.message); // You can replace this with a toast notification library
+
+            // Navigate to /admin/banners
+            window.location.href = '/admin/classification';
+        })
+        .catch(error => {
+            alert(error.message);
+            console.error('Error:', error);
+            // Handle error if necessary
+        });
     }
+    
 </script>

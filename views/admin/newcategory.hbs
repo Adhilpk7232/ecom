@@ -90,7 +90,7 @@
                 <p class="py-4"><a href="/admin/dashbord">Dashboard</a> / <a href="/admin/category">Category</a> / <span
                         class="text-gray-400">Create Category</span></p>
                 <!-- Form -->
-                <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4" onsubmit="return validateForm()">
+                <form class=" mx-auto bg-white shadow-sm rounded px-8 pt-6 pb-8 mb-4" method="post" action="http://65.21.3.61:9001/api/v1/banners" onsubmit="submitForm(event)">
                     <div class="md:grid md:grid-cols-2 ">
                         <!-- Name Field -->
                         <div class="mb-4 md:mr-4">
@@ -99,17 +99,15 @@
                             </label>
                             <input
                                 class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="name" type="text" placeholder="Enter name">
-                            <p id="nameError" class="text-red-300"></p>
-
+                                id="name" name="name" type="text" placeholder="Enter name" required>
                         </div>
-                        <!-- Image Field -->
+                        <!-- Main Image Field -->
                         <div class="mb-4 ">
                             <label class="block text-gray-700 text-sm font-semibold mb-2" for="image">
                                 Image
                             </label>
                             <div class="w-28 h-20 border-2 rounded relative">
-                                <div id="image-preview"
+                                <div id="mainImage-preview"
                                     class=" h-full w-full flex flex-col items-center justify-center text-gray-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -120,12 +118,49 @@
                                 </div>
                                 <input
                                     class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="image" type="file" accept=".png, .jpg, .svg" onchange="previewImage(event)"
-                                    placeholder="Choose an image">
-
-
+                                    id="thumbImage" name="thumbImage" type="file" accept=".png, .jpg, .svg" onchange="uploadImage(event,'mainImage-preview')"
+                                    required>
+                                    <input type="text" hidden name="thumbImagePath" id="thumbImagePath">
                             </div>
-                            <p id="imageError" class="text-red-300"></p>
+                        </div>
+                        <!-- description Field -->
+                        <div class="mb-4 md:mr-4">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="description">
+                                Description
+                            </label>
+                            <textarea required placeholder="Enter Description" class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="descriptiom" id="description" cols="5" rows="5">
+                            </textarea>
+                        </div>
+                        <!--Cover Image Field -->
+                        <div class="mb-4 ">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="image">
+                                Image
+                            </label>
+                            <div class="w-28 h-20 border-2 rounded relative">
+                                <div id="coverImage-preview"
+                                    class=" h-full w-full flex flex-col items-center justify-center text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                                    </svg>
+                                    <p class="">Browse</p>
+                                </div>
+                                <input
+                                    class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="converImage" name="converImage" type="file" accept=".png, .jpg, .svg" onchange="uploadImage(event,'coverImage-preview')"
+                                    required>
+                                    <input type="text" hidden name="coverImagePath" id="coverImagePath">
+                            </div>
+                        </div>
+                        <!-- Name Field -->
+                        <div class="mb-4 md:mr-4">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="slug">
+                                Url Key
+                            </label>
+                            <input
+                                class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="slug" name="slug" type="text" placeholder="Enter slug name" required>
                         </div>
                         <!-- Status Field -->
                         <div class="mb-4 md:mr-4">
@@ -133,10 +168,31 @@
                                 Status
                             </label>
                             <div class="relative text-gray-700">
-                                <select
+                                <select name="isActive"
                                     class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
+                                    <option value="true">Active</option>
+                                    <option value="false">Inactive</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M8.293 13.707a1 1 0 0 1-1.414-1.414L9.586 10 6.293 6.707a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-.707.293z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Visible Field -->
+                        <div class="mb-4 md:mr-4">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                                Visible Status
+                            </label>
+                            <div class="relative text-gray-700">
+                                <select name="isVisible"
+                                    class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="true">Active</option>
+                                    <option value="false">Inactive</option>
                                 </select>
                                 <div
                                     class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -187,62 +243,98 @@
             }
         });
     });
-    function previewImage(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    function uploadImage(event,previewId) {
+        var input = event.target;
+        console.log(input.id,"input")
+        var preview = document.getElementById(previewId);
 
-        reader.onload = function () {
-            const preview = document.getElementById('image-preview');
-            const image = new Image();
-            image.src = reader.result;
-            image.classList.add('w-full', 'h-full', 'object-cover');
-            preview.innerHTML = '';
-            preview.appendChild(image);
+        while (preview.firstChild) {
+            preview.removeChild(preview.firstChild);
         }
 
-        reader.readAsDataURL(file);
-    }
-    const nameError = document.getElementById('nameError')
-    const imageError = document.getElementById('imageError')
+        var file = input.files[0];
+        var reader = new FileReader();
 
-            function validateForm() {
-                console.log("hello")
-        const nameField = document.getElementById('name');
-            const imageField = document.getElementById('image');
-            let error = false;
-
-            // Clear previous error styles
-            nameField.classList.remove('border-red-500');
-            imageField.parentElement.classList.remove('border-red-500');
-
-            // Validate Name Field
-            if (nameField.value.trim() === '') {
-                nameField.classList.add('border', 'border-red-300');
-                nameError.innerHTML = 'Name is required'
-            error = true;
+        reader.onloadend = function () {
+            var img = document.createElement('img');
+            img.src = reader.result;
+            img.classList.add('h-full', 'w-full');
+            preview.appendChild(img);
         }
+        if (file) {
+            reader.readAsDataURL(file);
+        } 
+        var file = input.files[0];
+        var formData = new FormData();
+        formData.append('files', file);
+        const requestOptions = {
+            method: "POST",
+            body: formData,
+            redirect: "follow"
+        };
 
-            // Validate Image Field
-            const imagePreview = document.getElementById('image-preview');
-            const imageSvg = imagePreview.querySelector('svg');
-            if (imageSvg && imageSvg.parentNode !== null) {
-                imageField.parentElement.classList.add('border', 'border-red-300');
-                imageError.innerHTML = 'Image is required'
-            error = true;
-        }
-
-            // Focus on the first error field
-            if (error) {
-            if (nameField.value.trim() === '') {
-                nameField.focus();
-            } else {
-                imageField.focus();
+         fetch('http://65.21.3.61:9001/api/v1/categories/upload/images', requestOptions)
+        .then(response => {
+            console.log(response)
+            if (!response.ok) {
+                throw new Error('Error uploading image: ' + response.statusText);
             }
-            return false;
-        }
+            return response.json();})
+        .then(data => {
+            // Display image with backend response URL
+            var img = document.createElement('img');
+            img.src = `http://65.21.3.61:9001/${data[0].url}`; // Assuming the URL is in the 'url' field of the response
+            img.classList.add('h-full', 'w-full');
+            //preview.removeChild(preview.firstChild);
+            preview.appendChild(img);
 
-            return true;
+            // Set image field input value as the path from the response
+            console.log("path",data[0].path)
+             if (input.id === 'thumbImage') {
+                document.getElementById('thumbImagePath').value = data[0].path;
+            } else if (input.id === 'coverImage') {
+                document.getElementById('coverImagePath').value = data[0].path;
+            }
+        })
+        .catch(error =>{
+        alert(error.message);
+         console.error('Error:', error)});
     }
+    function submitForm(event) {
+        event.preventDefault(); // Prevent default form submission
+        var jsonData = {};
+        var form = event.target;
+        var formData = new FormData(form);
+        formData.forEach((value, key) => {
+        if (key !== 'thumbImage'||key !== 'coverImage') { // Exclude the image field
+            jsonData[key] = value;
+        }
+    });
+        console.log("data",jsonData)
+        fetch('http://65.21.3.61:9001/api/v1/categories', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {if (!response.ok) {
+                throw new Error('Error uploading image: ' + response.statusText);
+            }
+            return response.json();})
+        .then(data => {
+            // Display success message
+            // Assuming the success message is in the 'message' field of the response
+            alert(data.message); // You can replace this with a toast notification library
 
+            // Navigate to /admin/banners
+            window.location.href = '/admin/category';
+        })
+        .catch(error => {
+            alert(error.message);
+            console.error('Error:', error);
+            // Handle error if necessary
+        });
+    }
 
 </script>
