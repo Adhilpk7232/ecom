@@ -191,30 +191,28 @@
                                     </label>
                                     <input
                                         class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="name" type="text" placeholder="Enter name">
+                                        id="markup" name="markup" type="number" placeholder="Enter markup" required>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <!-- sale Price Field -->
                                 <div class="mb-4 md:mr-4 ">
-                                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="salePrice">
                                         Sale Price
                                     </label>
                                     <input
                                         class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="name" type="text" placeholder="Enter name">
-                                    <p id="nameError" class="text-red-300"></p>
+                                        id="salePrice" name="salePrice" type="number" placeholder="Enter Sale Price" required>
 
                                 </div>
                                 <!-- Compare Price Field -->
                                 <div class="mb-4 md:mr-4 ">
-                                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="name">
+                                    <label class="block text-gray-700 text-sm font-semibold mb-2" for="compareAtPrice">
                                         Compare Price
                                     </label>
                                     <input
                                         class=" appearance-none border rounded w-full py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="name" type="text" placeholder="Enter name">
-                                    <p id="nameError" class="text-red-300"></p>
+                                        id="compareAtPrice" name="compareAtPrice" type="number" placeholder="Enter Compare Price" required>
                                 </div>
                             </div>
                             <!-- Main Image Field -->
@@ -236,23 +234,16 @@
                                     <input
                                         class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="image" type="file" accept=".png, .jpg, .svg" onchange="previewImage(event)"
-                                        placeholder="Choose an image">
-
-
+                                        placeholder="Choose an image" required>
                                 </div>
                             </div>
                              <div class="mb-4 md:mr-4">
                                 <label class="block text-gray-700 text-sm font-semibold mb-2" for="description">
                                     Description
                                 </label>
-                                <input
-                                    class=" appearance-none border rounded w-full h-20 py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="description" type="text" placeholder="Enter Description">
-                                <p id="descriptionError" class="text-red-300"></p>
-
+                                <textarea class=" appearance-none border rounded w-full h-20 py-2 px-3 shadow text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                 name="description" id="description" cols="5" rows="5"></textarea>          
                             </div>
-                           
-                            
                             <!-- Cover Image Field -->
                              <div class="mb-4 md:mr-4">
                                 <h1 class="py-1">Additional Image</h1>
@@ -273,8 +264,6 @@
                                         class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="image" type="file" accept=".png, .jpg, .svg" onchange="previewImage(event)"
                                         placeholder="Choose an image">
-
-
                                 </div>
                             </div>
                             <!-- Image Field 2 -->
@@ -293,8 +282,6 @@
                                         class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="image" type="file" accept=".png, .jpg, .svg" onchange="previewImage(event)"
                                         placeholder="Choose an image">
-
-
                                 </div>
                             </div>
                             <!-- Image Field 3 -->
@@ -333,8 +320,6 @@
                                         class="absolute cursor-pointer left-0 top-0 opacity-0 w-full h-full  shadow appearance-none    py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="image" type="file" accept=".png, .jpg, .svg" onchange="previewImage(event)"
                                         placeholder="Choose an image">
-
-
                                 </div>
                             </div>
                             </div>
@@ -342,11 +327,11 @@
 
                                 <!-- Stock Availablity Field -->
                         <div class="mb-4 md:mr-4">
-                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="stockAvailability">
                                 Stock Availablity
                             </label>
                             <div class="relative text-gray-700">
-                                <select name="isActive"
+                                <select name="stockAvailability" id="stockAvailability"
                                     class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="true">Available</option>
                                     <option value="false">Unavailable</option>
@@ -363,11 +348,11 @@
                         </div>
                             <!-- Manage Stock Field -->
                         <div class="mb-4 md:mr-4">
-                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="manageStock">
                                 Manage Stock
                             </label>
                             <div class="relative text-gray-700">
-                                <select name="isActive"
+                                <select name="manageStock" id="manageStock"
                                     class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="true">Manage</option>
                                     <option value="false">Unmanage</option>
@@ -384,11 +369,11 @@
                         </div>
                             <!-- Status Field -->
                         <div class="mb-4 md:mr-4">
-                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="isActive">
                                 Status
                             </label>
                             <div class="relative text-gray-700">
-                                <select name="isActive"
+                                <select name="isActive" id="isActive"
                                     class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="true">Active</option>
                                     <option value="false">Inactive</option>
@@ -405,11 +390,11 @@
                         </div>
                         <!-- Visible Field -->
                         <div class="mb-4 md:mr-4">
-                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="status">
+                            <label class="block text-gray-700 text-sm font-semibold mb-2" for="isVisible">
                                 Visible Status
                             </label>
                             <div class="relative text-gray-700">
-                                <select name="isVisible"
+                                <select name="isVisible" id="isVisible"
                                     class="block appearance-none w-full border  py-2 px-3 rounded shadow  leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="true">Active</option>
                                     <option value="false">Inactive</option>
@@ -463,5 +448,94 @@
             }
         });
     });
+
+    function uploadImage(event,previewId) {
+        var input = event.target;
+        console.log(input.id,"input")
+        var preview = document.getElementById(previewId);
+
+        while (preview.firstChild) {
+            preview.removeChild(preview.firstChild);
+        }
+
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            var img = document.createElement('img');
+            img.src = reader.result;
+            img.classList.add('h-full', 'w-full');
+            preview.appendChild(img);
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } 
+        var file = input.files[0];
+        var formData = new FormData();
+        formData.append('files', file);
+        const requestOptions = {
+            method: "POST",
+            body: formData,
+            redirect: "follow"
+        };
+
+         fetch('http://65.21.3.61:9001/api/v1/catalog/files', requestOptions)
+        .then(response => {
+            console.log(response)
+            if (!response.ok) {
+                throw new Error('Error uploading image: ' + response.statusText);
+            }
+            return response.json();})
+        .then(data => {
+            // Display image with backend response URL
+            var img = document.createElement('img');
+            img.src = `http://65.21.3.61:9001/${data[0].url}`; // Assuming the URL is in the 'url' field of the response
+            img.classList.add('h-full', 'w-full');
+            //preview.removeChild(preview.firstChild);
+            preview.appendChild(img);
+
+            // Set image field input value as the path from the response
+            console.log("path",data[0].path)
+             if (input.id === 'thumbImage') {
+                document.getElementById('thumbImagePath').value = data[0].path;
+            } else if (input.id === 'coverImage') {
+                document.getElementById('coverImagePath').value = data[0].path;
+            }
+        })
+        .catch(error =>{
+        alert(error.message);
+         console.error('Error:', error)});
+    }
+    function submitForm(event) {
+        event.preventDefault(); // Prevent default form submission
+        var jsonData = {};
+        var form = event.target;
+        var formData = new FormData(form);
+        formData.forEach((value, key) => {
+        if (key !== 'thumbImage'||key !== 'coverImage') { // Exclude the image field
+            jsonData[key] = value;
+        }
+    });
+        console.log("data",jsonData)
+        fetch('http://65.21.3.61:9001/api/v1/products', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {if (!response.ok) {
+                throw new Error('Error: ' + response.statusText);
+            }
+            return response.json();})
+        .then(data => {
+            alert(data.message);
+            window.location.href = '/admin/product';
+        })
+        .catch(error => {
+            alert(error.message);
+            console.error('Error:', error);
+        });
+    }
     
 </script>
